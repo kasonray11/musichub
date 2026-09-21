@@ -1,0 +1,23 @@
+services:
+  back:
+    build: ./back
+    ports:
+      - "3000:3000"
+    volumes:
+      - /tmp/shairport-sync-metadata:/tmp/shairport-sync-metadata
+      - /run/dbus/system_bus_socket:/run/dbus/system_bus_socket
+      - db-data:/data
+    environment:
+      - DATABASE_URL=file:/data/dev.db
+    restart: unless-stopped
+
+  front:
+    build: ./front
+    ports:
+      - "8080:80"
+    depends_on:
+      - back
+    restart: unless-stopped
+
+volumes:
+  db-data:
