@@ -1,0 +1,20 @@
+{
+  // This config governs the actual app code in src/ - code that runs in the
+  // BROWSER. Vite projects split config in two because vite.config.ts itself
+  // runs in Node (to build your app), which is a different environment than
+  // the app it builds - see tsconfig.node.json for that half.
+  "compilerOptions": {
+    "target": "ES2022",
+    "lib": ["ES2022", "DOM", "DOM.Iterable"], // "DOM" gives you types for document, window, WebSocket, etc.
+    "module": "ESNext",
+    "moduleResolution": "Bundler", // tells TS "Vite will handle resolving imports, don't second-guess it"
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true, // Vite (via esbuild) does the actual compiling; tsc here is ONLY used for type-checking
+    "jsx": "react-jsx", // enables the JSX syntax (the HTML-like tags inside .tsx files) without manual React imports
+    "strict": true,
+    "skipLibCheck": true
+  },
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

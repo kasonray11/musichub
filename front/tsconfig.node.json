@@ -1,0 +1,14 @@
+{
+  // This tiny second config exists ONLY to type-check vite.config.ts, which
+  // runs in Node while building your app - not in the browser. That's why it
+  // doesn't include "DOM" in its lib and is scoped to just that one file.
+  "compilerOptions": {
+    "composite": true,
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "target": "ES2022",
+    "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true
+  },
+  "include": ["vite.config.ts"]
+}
